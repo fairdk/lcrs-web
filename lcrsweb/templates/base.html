@@ -1,35 +1,67 @@
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar sekizai_tags compress lcrs_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/lcrsweb.css' %}">
+  {% compress css %}
+      <link rel="stylesheet" type="text/x-scss" href="{% static 'css/lcrsweb.scss' %}">
+  {% endcompress %}
 
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
-    </head>
+  {% render_block "css" %}
+</head>
 
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
+<body class="{% block body_class %}{% endblock %}">
+    {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+    <div class="container">
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/lcrsweb.js' %}"></script>
+      <div class="lcrsheader">
+        <h1><a href="/">LCRS</a></h1>
+        <nav>
+          <ul class="nav nav-justified">
+            {% get_menu as top_menu %}
+            {% for item in top_menu %}
+            <li class="nav-item">
+              <a class="nav-link {% if item.pk == page.pk %} active{% endif %}" href="{{ item.url }}">
+                {{ item.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
 
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
-    </body>
+      <!-- Jumbotron -->
+      <div class="jumbotron" style="background: url('{% static 'img/jumbotron_splash.jpeg' %}')">
+        <h1>Large-scale Computer Reuse Suite</h1>
+        <p class="lead">
+          For the benefit of people and the planet, let us start re-using, repairing and refurbishing computers instead of throwing them away
+        </p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Download (Debian/Ubuntu)</a></p>
+      </div>
+
+      {% block content %}{% endblock %}
+
+      <!-- Site footer -->
+      <footer class="footer">
+        <p>&copy; Benjamin Bach & FAIR Danmark 2016</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+    {% render_block "js" %}
+</body>
 </html>

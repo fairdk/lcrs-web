@@ -10,6 +10,8 @@ db.sqlite3
 # C extensions
 *.so
 
+static/
+
 # Distribution / packaging
 .Python
 env/

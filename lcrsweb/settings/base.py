@@ -12,22 +12,13 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 from __future__ import absolute_import, unicode_literals
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-
-# Application definition
-
 INSTALLED_APPS = [
-    'home',
-    'search',
+    'pages',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -43,6 +34,8 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'sekizai',
+    'compressor',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "sekizai.context_processors.sekizai",
             ],
         },
     },
@@ -105,7 +99,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Copenhagen'
 
 USE_I18N = True
 
@@ -117,10 +111,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATICFILES_FINDERS = [
+STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
@@ -135,8 +135,8 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "lcrsweb"
+WAGTAIL_SITE_NAME = "LCRS"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://lcrs.fairdanmark.dk'

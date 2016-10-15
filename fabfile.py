@@ -65,14 +65,6 @@ def collectstatic():
         run('python manage.py collectstatic --noinput')
 
 
-def clear_cache():
-    """
-    Runs collectstatic on the remote project
-    """
-    with virtualenv():
-        run('python manage.py clear_cache')
-
-
 def install():
     """
     Runs collectstatic on the remote project
@@ -86,6 +78,5 @@ def deploy():
     git_pull()
     install()
     migrate()
-    clear_cache()
     api.run('touch /var/vhosts/lcrs/reload')
     register_deployment(".")

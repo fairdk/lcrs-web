@@ -79,4 +79,3 @@ def deploy():
     install()
     migrate()
     api.run('touch /var/vhosts/lcrs/reload')
-    register_deployment(".")

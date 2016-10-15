@@ -1,4 +1,4 @@
-{% load static wagtailuserbar sekizai_tags compress lcrs_tags %}
+{% load static wagtailuserbar sekizai_tags compress lcrs_tags bootstrap_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -21,6 +21,22 @@
 
 <body class="{% block body_class %}{% endblock %}">
     {% wagtailuserbar %}
+
+
+    {% if messages %}
+      <div class="container">
+
+        {% for message in messages %}
+        <div class="alert alert-{{ message|bootstrap_message_tag }} alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{ message }}
+        </div>
+        {% endfor %}
+
+      </div>
+    {% endif %}
 
     <div class="container">
 
@@ -46,7 +62,13 @@
         <p class="lead">
           For the benefit of people and the planet, let us start re-using, repairing and refurbishing computers instead of throwing them away
         </p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Download (Debian/Ubuntu)</a></p>
+        <form method="POST" action="{% url 'mailing-list-signup' %}" class="form-inline">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Your email...">
+            <button class="btn btn-primary">Notify me of launch...</button>
+          </div>
+        </form>
       </div>
 
       {% block content %}{% endblock %}

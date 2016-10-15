@@ -19,3 +19,9 @@ class LCRSPage(Page):
     content_panels = Page.content_panels + [  # @UndefinedVariable
         StreamFieldPanel('body'),
     ]
+
+
+class MailingListSignup(models.Model):
+    
+    email = models.EmailField()
+    created = models.DateTimeField(auto_now_add=True)

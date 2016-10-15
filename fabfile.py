@@ -78,4 +78,5 @@ def deploy():
     git_pull()
     install()
     migrate()
+    collectstatic()
     api.run('touch /var/vhosts/lcrs/reload')

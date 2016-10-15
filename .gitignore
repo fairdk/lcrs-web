@@ -10,7 +10,7 @@ db.sqlite3
 # C extensions
 *.so
 
-static/
+static/*
 
 # Distribution / packaging
 .Python

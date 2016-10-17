@@ -4,12 +4,6 @@ $fair-red: rgb(228, 70, 98);
 $fair-yellow: rgb(236, 209, 54);
 $fair-blue: rgb(58, 83, 164);
 
-$fair-light-bluegreen: rgb(226, 243, 245);
-$fair-light-green: rgb(165, 206, 190);
-$fair-light-red: rgb(253, 210, 188);
-$fair-light-yellow: rgb(255, 249, 184);
-$fair-light-blue: rgb(181, 201, 232);
-
 @import 'fonts';
 
 $font-family-sans-serif: 'Ubuntu', sans-serif;
@@ -18,13 +12,13 @@ $font-family-base: 'Ubuntu', sans-serif;
 
 // $fa-font-path: '/static/font-awesome/fonts';
 
+$enable-flex: true;
 
-
-$brand-primary:             $fair-bluegreen;
-$brand-success:             $fair-green;
-$brand-info:                $fair-blue;
-$brand-warning:             $fair-yellow;
-$brand-danger:              $fair-red;
+$brand-primary:             rgb(53, 190, 180);
+$brand-success:             #2ECB67;
+$brand-info:                #2E83CB;
+$brand-warning:             #31D59A;
+$brand-danger:              #31B5D5;
 
 @import '../bootstrap/scss/bootstrap';
 // @import '../font-awesome/scss/font-awesome';
@@ -57,11 +51,11 @@ body {
 
 .lcrsheader
 {
-
-    h1 {
+    h1, h1 > a {
         font-weight: bold;
-        color: $brand-primary;
+        color: #333;
         font-size: 44px;
+        margin: 0;
     }
 
     /* add .nav-justified, see: https://github.com/twbs/bootstrap/issues/18653 */

@@ -8,13 +8,15 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %} | Large-scale Computer Reuse Suite</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   {% compress css %}
       <link rel="stylesheet" type="text/x-scss" href="{% static 'css/lcrsweb.scss' %}">
   {% endcompress %}
+
+    <link rel="shortcut icon" type="image/png" href="{% static "img/lcrs_256x256.png" %}" />
 
   {% render_block "css" %}
 </head>
@@ -41,8 +43,15 @@
     <div class="container">
 
       <div class="lcrsheader">
-        <h1><a href="/">LCRS</a></h1>
-        <nav>
+        <div style="table-row">
+          <a href="/" style="display: table-cell; padding-right: 30px;"><img src="{% static "img/lcrs_256x256.png" %}" class="img-fluid" style="width: 128px"></a>
+          <div style="display: table-cell; vertical-align: middle">
+            <h1>
+              <a href="/">LCRS</a>
+            </h1>
+          </div>
+        </div>
+        <nav style="margin-top: 10px">
           <ul class="nav nav-justified">
             {% get_menu as top_menu %}
             {% for item in top_menu %}

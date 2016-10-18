@@ -46,9 +46,10 @@
         <div style="table-row">
           <a href="/" style="display: table-cell; padding-right: 30px;"><img src="{% static "img/lcrs_256x256.png" %}" class="img-fluid" style="width: 128px"></a>
           <div style="display: table-cell; vertical-align: middle">
-            <h1>
+            <h1 style="margin-bottom: -8px; margin-left: -2px">
               <a href="/">LCRS</a>
             </h1>
+            <div class="text-muted"><small>Large-scale Computer Reuse Suite</small></div>
           </div>
         </div>
         <nav style="margin-top: 10px">
@@ -67,10 +68,9 @@
 
       <!-- Jumbotron -->
       <div class="jumbotron" style="background: url('{% static 'img/jumbotron_splash.jpeg' %}')">
-        <h1>Large-scale Computer Reuse Suite</h1>
-        <p class="lead">
-          For the benefit of people and the planet, let us start re-using, repairing and refurbishing computers instead of throwing them away
-        </p>
+        <h1>
+        For the benefit of people and the planet, let us be more efficient and effective re-using and refurbishing computers, <strong>large-scale!</strong>
+        </h1>
         <form method="POST" action="{% url 'mailing-list-signup' %}" class="form-inline">
           {% csrf_token %}
           <div class="form-group">

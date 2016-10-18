@@ -37,6 +37,9 @@ body {
   text-align: center;
   background-color: transparent;
   margin-top: 20px;
+  h1 {
+      text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);
+  }
 }
 .jumbotron .btn {
   padding: 14px 24px;
@@ -160,4 +163,20 @@ body {
     float: right;
     margin: 10px;
     border: 1px solid #eee;
+}
+
+.lcrs-feature-message
+{
+    background-color: $brand-warning;
+    padding: 40px;
+    h2, h3, h4
+    {
+        color: #ffffff;
+        @extend .text-xs-center;
+    }
+    h2
+    {
+        font-size: 44px;
+        font-weight: bold;
+    }
 }

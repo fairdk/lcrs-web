@@ -45,3 +45,18 @@ class ThreeColumnsBlock(blocks.StructBlock):
     class Meta:
         icon = 'openquote'
         template = "pages/blocks/three_columns.html"
+
+
+class FeatureMessageBlock(blocks.StructBlock):
+    """
+    Shows a callout. Can be used in several positions of a StreamField.
+    """
+
+    text = blocks.RichTextBlock()
+    link_url = URLOrPageBlock(required=False)
+    link_text = blocks.CharBlock(required=False)
+    link_button = blocks.ChoiceBlock(choices=FAIR_BUTTON_CHOICES, required=False)
+
+    class Meta:
+        icon = 'openquote'
+        template = "pages/blocks/feature_message.html"

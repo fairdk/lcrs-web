@@ -69,7 +69,8 @@
       <!-- Jumbotron -->
       <div class="jumbotron" style="background: url('{% static 'img/jumbotron_splash.jpeg' %}')">
         <h1>
-        For the benefit of people and the planet, let us be more efficient and effective re-using and refurbishing computers, <strong>large-scale!</strong>
+        For the benefit of people and the planet, let us be efficient and effective at re-using and refurbishing computers.</h1>
+        <h1>...and let's do it <strong>large-scale!</strong>
         </h1>
         <form method="POST" action="{% url 'mailing-list-signup' %}" class="form-inline">
           {% csrf_token %}
@@ -81,6 +82,7 @@
       </div>
 
     </div>
+
     {% block content %}{% endblock %}
 
     <div class="container">

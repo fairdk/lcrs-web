@@ -1,0 +1,15 @@
+<div class="lcrs-feature-message">
+  <div class="container">
+    {{ value.text }}
+    
+    {% if value.link_text %}
+      <p>
+        <a href="{{ value.link_url }}" class="btn btn-lg btn-{{ block.link_button }}">
+          {{ value.link_text }}
+        </a>
+      </p>
+    {% endif %}
+    
+  </div>
+</div>
+

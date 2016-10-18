@@ -14,6 +14,7 @@ class LCRSPage(Page):
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('three_columns', fields.ThreeColumnsBlock()),
+        ('feature_message', fields.FeatureMessageBlock()),
     ], default="")
 
     content_panels = Page.content_panels + [  # @UndefinedVariable

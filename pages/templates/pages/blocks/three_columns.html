@@ -1,18 +1,19 @@
+{% load wagtailcore_tags %}
 <div class="container" style="margin-top: 30px; margin-bottom: 0;">
 <div class="row">
 
   <div class="col-lg-4">
-    {{ value.column_1_text }}
-    <p><a class="btn btn-{{ value.column_1_link_button }}" href="{{ value.column_1_link_url }}" role="button">{{ value.column_1_link_text }} &raquo;</a></p>
+    {% include_block value.column_1_text %}
+    <p><a class="btn btn-{% include_block value.column_1_link_button %}" href="{% include_block value.column_1_link_url %}" role="button">{% include_block value.column_1_link_text %} &raquo;</a></p>
   </div>
 
   <div class="col-lg-4">
-    {{ value.column_2_text }}
-    <p><a class="btn btn-{{ value.column_2_link_button }}" href="{{ value.column_2_link_url }}" role="button">{{ value.column_2_link_text }} &raquo;</a></p>
+    {% include_block value.column_2_text %}
+    <p><a class="btn btn-{% include_block value.column_2_link_button %}" href="{% include_block value.column_2_link_url %}" role="button">{% include_block value.column_2_link_text %} &raquo;</a></p>
  </div>
   <div class="col-lg-4">
-    {{ value.column_3_text }}
-    <p><a class="btn btn-{{ value.column_3_link_button }}" href="{{ value.column_3_link_url }}" role="button">{{ value.column_3_link_text }} &raquo;</a></p>
+    {% include_block value.column_3_text %}
+    <p><a class="btn btn-{% include_block value.column_3_link_button %}" href="{% include_block value.column_3_link_url %}" role="button">{% include_block value.column_3_link_text %} &raquo;</a></p>
   </div>
 </div>
 <hr>

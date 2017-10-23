@@ -1,11 +1,12 @@
+{% load wagtailcore_tags %}
 <div class="lcrs-feature-message">
   <div class="container">
-    {{ value.text }}
+    {% include_block value.text %}
     
     {% if value.link_text %}
       <p>
-        <a href="{{ value.link_url }}" class="btn btn-lg btn-{{ block.link_button }}">
-          {{ value.link_text }}
+        <a href="{% include_block value.link_url %}" class="btn btn-lg btn-{% include_block value.link_button %}">
+          {% include_block value.link_text %}
         </a>
       </p>
     {% endif %}
